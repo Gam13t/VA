@@ -1,5 +1,8 @@
 # RELEASE NOTES
 
+### 0.2.1
+* Fixed unit-tests
+
 ### 0.2.0
 * Added abstractions to project skeleton
 * Added readme.md
