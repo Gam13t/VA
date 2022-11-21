@@ -13,6 +13,8 @@ class PredefinedVocabularity:
         return self.base_dct
 
 
+# TODO: change in a more preferable way
+
 name = {"va": ("Маша", "Машик", "Машкинс")}
 action = {"tbr": ("скажи", "расскажи", "покажи", "сколько", "произнеси")}
 command = {

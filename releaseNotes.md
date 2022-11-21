@@ -1,5 +1,10 @@
 # RELEASE NOTES
 
+### 0.3.0
+* Added more proper way of handling config values (however will need to inhance appoach to venv config in future)
+* Enhanced Readme.md
+* Micro code amendments
+
 ### 0.2.1
 * Fixed unit-tests
 

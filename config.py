@@ -1,15 +1,35 @@
-TO_TEST = True
+import os
 
-# CREDENTIALS FOR EWeLink connect
-ENABLE_EWELINK_HARDWARE_PROVIDER = False
-LOGIN = "placeholder"
-PASSWORD = "placeholder"
-EMAIL = "placeholder"
-API_KEY = "placeholder"
+from dataclasses import dataclass
+from dotenv import load_dotenv
 
-HARDWARE_PROVIDER_CREDENTIALS = {
-    "login": LOGIN,
-    "password": PASSWORD,
-    "email": EMAIL,
-    "api_key": API_KEY,
-}
+# TODO: rework this in a more propper venv approach
+@dataclass
+class Config:
+    login: str
+    password: str
+    api_key: str
+    email: str
+    hardware_provider_credentials: dict
+    debug: bool = False
+    network_tests: bool = True
+
+    def __init__(self):
+        load_dotenv()
+
+        self.login = os.getenv("LOGIN")
+        self.password = os.getenv("PASSWORD")
+        self.email = os.getenv("EMAIL")
+        self.api_key = os.getenv("API_KEY")
+
+        self.network_tests = os.getenv("NETWORK_TESTS")
+
+        self.hardware_provider_credentials = {
+            "login": self.login,
+            "password": self.password,
+            "email": self.email,
+            "api_key": self.api_key,
+        }
+
+
+config_instance = Config()
