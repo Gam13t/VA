@@ -52,6 +52,15 @@ Next, you should create .env file in the root folder of this project and fill it
 >
 >API_KEY = "placeholder"
 
+**Setup pre-commit**
+
+After that, if you gonna to create any pull request into this project - make sure you have installed pre-commit.
+Run:
+> pre-commit install
+>
+> pre-commit run --all-files
+
+Proceed with any code amendments only after this step
 **Setted up**
 
 Now you are fully done to proceed with this project. GL, HF <3

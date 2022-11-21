@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+### 0.3.1
+* Added some more info to Readme.md
+* Prettified pre-commit-config.yaml
+
 ### 0.3.0
 * Added more proper way of handling config values (however will need to inhance appoach to venv config in future)
 * Enhanced Readme.md
