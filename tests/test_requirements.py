@@ -3,7 +3,7 @@
 import pytest
 import socket
 
-from config import TO_TEST
+from config import config_instance
 
 
 class TestRequirements:
@@ -36,7 +36,7 @@ class TestRequirements:
                 )
             )
 
-    def test_internet_connection(self, to_test=TO_TEST):
+    def test_internet_connection(self, to_test=config_instance.network_tests):
         """
         Test internet connection
         """
@@ -45,9 +45,9 @@ class TestRequirements:
         else:
             assert self.is_internet() == True
 
-    def test_speech_recognition(self, to_test=TO_TEST):
+    def test_speech_recognition(self, to_test=config_instance.network_tests):
         """
-        Test speech recognition, say Привет to check if everything is alright.
+        Test speech recognition, say Привет as this test is executed to check if everything is alright.
         """
         if not self.is_internet() and not to_test:
             assert True
