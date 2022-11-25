@@ -6,3 +6,4 @@ gtts
 pytest
 python-dotenv
 pre-commit
+python-Levenshtein

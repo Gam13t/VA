@@ -14,6 +14,8 @@ class Config:
     debug: bool = False
     network_tests: bool = True
 
+    va_name: str = "Маша"
+
     def __init__(self):
         load_dotenv()
 
@@ -31,5 +33,7 @@ class Config:
             "api_key": self.api_key,
         }
 
+        self.va_name = os.getenv("VA_NAME").lower()
 
-config_instance = Config()
+
+filled_config = Config()

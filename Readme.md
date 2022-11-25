@@ -51,6 +51,9 @@ Next, you should create .env file in the root folder of this project and fill it
 >EMAIL = "placeholder"
 >
 >API_KEY = "placeholder"
+>
+>VA_NAME = "Маша"  # VOICE ASSISTANT NAME
+
 
 **Setup pre-commit**
 
@@ -61,6 +64,14 @@ Run:
 > pre-commit run --all-files
 
 Proceed with any code amendments only after this step
+
+**Run tests**
+
+To run tests, just execute:
+> pytest -vv
+
+While last test - say 'привет' to pass it.
+
 **Setted up**
 
 Now you are fully done to proceed with this project. GL, HF <3
