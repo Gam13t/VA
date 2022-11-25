@@ -1,5 +1,9 @@
 # RELEASE NOTES
 
+### 0.5.0
+* Added some methods for fun
+* Small code refactor
+
 ### 0.4.0
 * Added speech frame provider
 * Added action linker

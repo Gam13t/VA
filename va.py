@@ -2,7 +2,7 @@
 # TODO: speed up a little
 
 import datetime
-
+import webbrowser as browser_controller
 from providers import TTSEngineProvider, tts_engine, speech_recognition_provider
 from constants import PredefinedVocabularity, action_linker
 from config import filled_config as config
@@ -10,7 +10,33 @@ from config import Config
 from exceptions import InvalidInstanceException
 
 
-class VAExecutor:
+class VAProviderHelper:
+    def __init__(self):
+        self.tts_engine = tts_engine
+        self.action_linker = action_linker
+        self.speech_frame = speech_recognition_provider
+        self.config = config
+
+
+class VACommandsRealisation(VAProviderHelper):
+    def current_time(self):
+        now = datetime.datetime.now()
+        self.tts_engine.speak("Сейчас " + str(now.hour) + ":" + str(now.minute))
+
+    def open_google(self):
+        browser_controller.open("https://www.google.co.uk")
+
+    def open_command_communications(self):
+        browser_controller.open(
+            "https://m.pantheon.sk/mattermost/messages/@maksym.vynnyk"
+        )
+        browser_controller.open("https://mail.pantheon.sk/owa/")
+
+    def open_apple_music(self):
+        browser_controller.open("https://music.apple.com/us/browse")
+
+
+class VAExecutor(VACommandsRealisation):
     def __init__(self):
         self.tts_engine = tts_engine
         self.action_linker = action_linker
@@ -26,13 +52,14 @@ class VAExecutor:
         if not isinstance(self.config, Config):
             raise InvalidInstanceException
 
-    def current_time(self):
-        now = datetime.datetime.now()
-        self.tts_engine.speak("Сейчас " + str(now.hour) + ":" + str(now.minute))
-
     @property
     def linked_commands(self):
-        return {"current_time": self.current_time}
+        return {
+            "current_time": self.current_time,
+            "open_google": self.open_google,
+            "open_command_communications": self.open_command_communications,
+            "open_apple_music": self.open_apple_music,
+        }
 
 
 class VAInterface(VAExecutor):
