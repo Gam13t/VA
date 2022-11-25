@@ -1,4 +1,8 @@
 import pyttsx3 as base_tts_engine
+import speech_recognition as speech_frame
+from fuzzywuzzy import fuzz as voice_distortion
+
+from config import filled_config as config
 
 
 class TTSEngineProvider:
@@ -25,6 +29,18 @@ class TTSEngineProvider:
         self.tts_engine.stop()
 
 
+class SpeechRecognitionProvider:
+    """
+    Class for handling SpeechRecognition functionality
+    """
+
+    def __init__(self):
+        self.voice_recognizer = speech_frame.Recognizer()
+        self.input_device = speech_frame.Microphone(device_index=1)
+        self.UnknownValueError = speech_frame.UnknownValueError
+        self.voice_distortion = voice_distortion
+
+
 class HardwareProvider:
     """
     Class for handling methods that are performing on hardware devices
@@ -46,12 +62,5 @@ class HardwareProvider:
         pass
 
 
-class SpeechRecognitionProvider:
-    """
-    Class for handling SpeechRecognition functionality
-    """
-
-    pass
-
-
 tts_engine = TTSEngineProvider()
+speech_recognition_provider = SpeechRecognitionProvider()

@@ -1,5 +1,13 @@
 # RELEASE NOTES
 
+### 0.4.0
+* Added speech frame provider
+* Added action linker
+* Added basic MVP-related functionality
+* Expanded config
+* Expanded constants
+* Added python package for speeding up this VA
+
 ### 0.3.1
 * Added some more info to Readme.md
 * Prettified pre-commit-config.yaml
