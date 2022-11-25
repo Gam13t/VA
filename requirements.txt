@@ -7,4 +7,4 @@ pytest
 python-dotenv
 pre-commit
 python-Levenshtein
-webbrowser
+playsound==1.2.2
