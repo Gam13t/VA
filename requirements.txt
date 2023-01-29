@@ -4,3 +4,7 @@ fuzzywuzzy
 PyAudio
 gtts
 pytest
+python-dotenv
+pre-commit
+python-Levenshtein
+webbrowser
