@@ -7,4 +7,5 @@ pytest
 python-dotenv
 pre-commit
 python-Levenshtein
+setuptools
 playsound==1.2.2
