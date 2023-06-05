@@ -59,7 +59,7 @@ class TestRequirements:
             with sr.Microphone(device_index=1) as source:
                 audio = r.listen(source)
 
-            query = r.recognize_google(audio, language="ru-RU")
+            query = r.recognize_google(audio, language=self.config.language)
             assert query.lower() == "привет"
 
     def is_internet(self):

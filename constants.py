@@ -13,7 +13,7 @@ class PredefinedVocabularity:
         return self.base_dct
 
 
-# TODO: change in a more preferable way
+# TODO(Rostyslav): change in a more preferable way
 
 name = {"va": ("Маша")}
 action = {"tbr": ("расскажи")}
@@ -33,13 +33,13 @@ command = {
             "проверь почту",
             "мне кто-то писал",
         ),
-        "open_apple_music": (
+        "open_music_player": (
             "открой Apple Music",
             "что послушать",
             "запусти музыку",
             "мне скучно",
         ),
-        "sadness": ("меня не любят", "я ненужный"),
+        "open_video_provider": ("хочу посмотреть видео"),
         "working_protocol": ("за работу", "протокол работа", "работать"),
         "joke_question": ("ты любишь подчиняться", "я люблю рабов"),
     }

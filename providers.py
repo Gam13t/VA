@@ -38,6 +38,7 @@ class SpeechRecognitionProvider:
         self.voice_recognizer = speech_frame.Recognizer()
         self.input_device = speech_frame.Microphone(device_index=1)
         self.UnknownValueError = speech_frame.UnknownValueError
+        self.RequestError = speech_frame.RequestError
         self.voice_distortion = voice_distortion
 
 
