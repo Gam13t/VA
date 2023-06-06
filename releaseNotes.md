@@ -1,5 +1,10 @@
 # RELEASE NOTES
 
+### 0.6.0
+* Expanded config
+* Small rework of listen method
+* Added requirements versions
+
 ### 0.5.0
 * Added some methods for fun
 * Small code refactor

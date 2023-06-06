@@ -1,4 +1,3 @@
-# TODO: speed up a little
 import logging
 import datetime
 import subprocess
@@ -23,11 +22,14 @@ class VAProviderHelper:
         self.tts_engine = tts_engine
         self.action_linker = action_linker
         self.speech_frame = speech_recognition_provider
+        self.browser_controller = (
+            browser_controller  # TODO(Rostyslav): change to discuss
+        )
         self.config = config
 
     def play(self, audio_file_path="acdc-back-in-black.wav"):
         current_path = Path(__file__).parent.resolve()
-        sound_path = str(current_path / "sounds" / "acdc-back-in-black.wav")
+        sound_path = str(current_path / "sounds" / audio_file_path)
         playsound(sound_path, block=False)
 
 
@@ -39,7 +41,7 @@ class VACommandsRealisation(VAProviderHelper):
     def response(func):
         def wrap(*args, **kwargs):
             result = func(*args, **kwargs)
-            tts_engine.speak("Слушаюсь, хозяин")
+            tts_engine.speak(config.va_behavior_config.base_reply[0])
             logger.debug(f"User has requested for {func}. Proceeding...")
             return result
 
@@ -120,7 +122,7 @@ class VAInterface(VAExecutor):
     def callback(self, user_input):
         try:
             query = self.speech_frame.voice_recognizer.recognize_google(
-                user_input, language="ru-RU"
+                user_input, language=self.config.language
             )
             self.check_query_contains_command(query.lower())
             print("Распознаная речь: " + query)
@@ -148,13 +150,19 @@ class VAInterface(VAExecutor):
         """
         Proceed only sentance with VA name inside
         """
-        va_name_index = query.find(config.va_name)
+        va_name_index = query.find(config.va_behavior_config.va_name)
         if va_name_index != -1:
             request = query[va_name_index:]
             self.get_commmand(request)
         pass
 
     def get_commmand(self, command):
+        """
+        TODO:
+            - make the algo less complicated and more effective.
+            - refactor a bit
+            - make listener async to work in background
+        """
         SUGGESTED_COMMAND = {"command": "", "percent": 0, "action": ""}
         for key, parced_action in self.action_linker.base_dct_filled["command"].items():
             for action in parced_action:

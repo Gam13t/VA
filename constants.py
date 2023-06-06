@@ -1,3 +1,6 @@
+from config import filled_config as config
+
+
 class PredefinedVocabularity:
     def __init__(self, name, action, command):
         self.base_dct = {}
@@ -15,7 +18,7 @@ class PredefinedVocabularity:
 
 # TODO(Rostyslav): change in a more preferable way
 
-name = {"va": ("Маша")}
+name = {"va": config.va_behavior_config.va_name}
 action = {"tbr": ("расскажи")}
 command = {
     "command": {
