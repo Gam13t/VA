@@ -1,3 +1,6 @@
+import os
+import openai
+
 import pyttsx3 as base_tts_engine
 import speech_recognition as speech_frame
 from fuzzywuzzy import fuzz as voice_distortion
@@ -38,7 +41,28 @@ class SpeechRecognitionProvider:
         self.voice_recognizer = speech_frame.Recognizer()
         self.input_device = speech_frame.Microphone(device_index=1)
         self.UnknownValueError = speech_frame.UnknownValueError
+        self.RequestError = speech_frame.RequestError
         self.voice_distortion = voice_distortion
+
+
+class ChatGPTApiProvider:
+    def __new__(cls):
+        if not config or config.gpt_credentials:
+            return None
+
+    def __init__(self):
+        openai.organization = config.gpt_credentials.chat_gpt_org_key
+        openai.api_key = config.gpt_credentials.chat_gpt_api_key
+        self.models = openai.Model.list()
+
+    def make_request(self, content: str):
+        """
+        Make a request to Chat GPT and get a responce
+        """
+        chat_completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo", messages=[{"role": "user", "content": content}]
+        )
+        print(chat_completion.choices[0].message.content)
 
 
 class HardwareProvider:

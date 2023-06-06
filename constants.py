@@ -1,3 +1,6 @@
+from config import filled_config as config
+
+
 class PredefinedVocabularity:
     def __init__(self, name, action, command):
         self.base_dct = {}
@@ -13,15 +16,13 @@ class PredefinedVocabularity:
         return self.base_dct
 
 
-# TODO: change in a more preferable way
+# TODO(Rostyslav): change in a more preferable way
 
-name = {"va": ("Маша")}
-action = {"tbr": ("скажи", "расскажи", "покажи", "сколько", "произнеси")}
+name = {"va": config.va_behavior_config.va_name}
+action = {"tbr": ("расскажи")}
 command = {
     "command": {
         "current_time": ("текущее время", "сейчас времени", "который час"),
-        "radio": ("включи музыку", "воспроизведи радио", "включи радио"),
-        "stupid1": ("расскажи анекдот", "рассмеши меня", "ты знаешь анекдоты"),
         "open_google": (
             "открой google",
             "запусти google",
@@ -33,14 +34,17 @@ command = {
             "открой чаты",
             "покажи сообщения",
             "проверь почту",
-            "протокол работа",
+            "мне кто-то писал",
         ),
-        "open_apple_music": (
+        "open_music_player": (
             "открой Apple Music",
             "что послушать",
             "запусти музыку",
             "мне скучно",
         ),
+        "open_video_provider": ("хочу посмотреть видео"),
+        "working_protocol": ("за работу", "протокол работа", "работать"),
+        "joke_question": ("ты любишь подчиняться", "я люблю рабов"),
     }
 }
 

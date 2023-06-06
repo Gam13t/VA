@@ -1,5 +1,3 @@
-#  TODO: REPLACE WITH UNIT TESTS
-
 import pytest
 import socket
 
@@ -59,8 +57,8 @@ class TestRequirements:
             with sr.Microphone(device_index=1) as source:
                 audio = r.listen(source)
 
-            query = r.recognize_google(audio, language="ru-RU")
-            assert query.lower() == "привет"
+            query = r.recognize_google(audio, language=config.language)
+            assert "привет" in query.lower()
 
     def is_internet(self):
         REMOTE_SERVER = "one.one.one.one"

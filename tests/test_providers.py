@@ -1,11 +1,11 @@
 class TestTTSProvider:
-    def test_tts_speak(self):
-        pass
-
     def test_tts_instance_creation(self):
         pass
 
     def test_tts_engine_instance(self):
+        pass
+
+    def test_tts_speak(self):
         pass
 
 
@@ -21,7 +21,3 @@ class TestHardwareProvider:
 
     def test_perform_on_telecom_device(self):
         pass
-
-
-class TestSpeechRecognitionProvider:
-    pass
